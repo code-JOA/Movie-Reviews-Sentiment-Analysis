@@ -123,7 +123,7 @@ def Get_director(x):
 # Leading actor
 # -
 
-def get_actor1(x):
+def Get_actor1(x):
     return ((x.split("screenplay); ")[-1]).split(", ")[0])
 
 
@@ -132,7 +132,7 @@ def get_actor1(x):
 # Supporting actor
 # -
 
-def get_actor2(x):
+def Get_actor2(x):
     if len((x.split("screenplay); ")[-1]).split(", ")) < 2:
         return np.NaN
     else:
@@ -144,7 +144,7 @@ def get_actor2(x):
 # 3rd actor
 # -
 
-def get_actor2(x):
+def Get_actor3(x):
     if len((x.split("screenplay); ")[-1]).split(", ")) < 3:
         return np.NaN
     else:
