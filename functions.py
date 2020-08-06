@@ -29,7 +29,7 @@ def Make_genrelist(x):
         return np.NaN
     else:
         return (st.join(gen))
-    
+
     
 
 def get_1st_actor(x):
@@ -42,8 +42,8 @@ def get_1st_actor(x):
         return np.NaN
     else:
         return (casts[0])
-    
-    
+
+
 def get_2nd_actor(x):
     """get second actor from list of casts """  
 
@@ -54,8 +54,8 @@ def get_2nd_actor(x):
         return np.NaN
     else:
         return (casts[1])
-    
-    
+
+
 def get_3rdactor(x):
     """get third actor from list of casts """  
     casts=[]
@@ -78,10 +78,28 @@ def get_directors(x):
         return np.NaN
     else:
         return (st.join(directors))
+
     
-    
-    
-    
-    
-    
-    
+
+import requests
+import json
+from tmdbv3api import TMDb
+from tmdbv3api import Movie
+tmdb = TMDb()
+tmdb.api_key = "de0b39d4bd85599f2e0dbce743bb0857"
+
+tmdb_movie = Movie()
+def Get_genre(x):
+    genres = []
+    result = tmdb_movie.search(x)
+    movie_id = result[0].id
+    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={}'.format(movie_id,tmdb.api_key))
+    data_json = response.json()
+    if data_json['genres']:
+        genre_str = " " 
+        for i in range(0,len(data_json['genres'])):
+            genres.append(data_json['genres'][i]['name'])
+        return genre_str.join(genres)
+    else:
+        np.NaN    
+
