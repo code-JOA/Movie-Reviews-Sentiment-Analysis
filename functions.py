@@ -103,3 +103,51 @@ def Get_genre(x):
     else:
         np.NaN    
 
+
+# +
+# custom function for 2018 data
+# -
+
+def Get_director(x):
+    """This is a custom function to get list of directors from the 2018 data"""
+    if " (director)" in x:
+        return x.split(" (director)")[0]
+    elif " (directors)" in x:
+        return x.split(" (directors)")[0]
+    else:
+        return x.split(" (director/screenplay)")[0]
+
+
+
+# +
+# Leading actor
+# -
+
+def get_actor1(x):
+    return ((x.split("screenplay); ")[-1]).split(", ")[0])
+
+
+
+# +
+# Supporting actor
+# -
+
+def get_actor2(x):
+    if len((x.split("screenplay); ")[-1]).split(", ")) < 2:
+        return np.NaN
+    else:
+        return ((x.split("screenplay); ")[-1]).split(", ")[1])
+
+
+
+# +
+# 3rd actor
+# -
+
+def get_actor2(x):
+    if len((x.split("screenplay); ")[-1]).split(", ")) < 3:
+        return np.NaN
+    else:
+        return ((x.split("screenplay); ")[-1]).split(", ")[2])
+
+
